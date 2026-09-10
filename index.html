@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Map</title>
+<style>
+  body {
+    background-image: 
+      url('left-banner-image.png'), 
+      url('right-banner-image.png'); 
+    background-size: auto 100%, auto 100%;   
+    background-position: left center, right center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #000;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .map-container {
+    position: relative;
+    width: 75vw;         
+    max-width: 1100px;   
+    aspect-ratio: 1.414 / 1; 
+    line-height: 0;
+  }
+
+  .map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Shared interactive hotspot styles */
+  [class$="-link"] {
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  [class$="-button"] {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    height: auto;
+    transition: transform 0.2s;
+    display: block;
+  }
+  
+  [class$="-button"]:hover {
+    transform: scale(1.05);
+  }
+
+  /* Perfectly aligned and sized to match the illustrated castle on the map */
+  .castle-link { top: 39.5%; left: 78.5%; } 
+  .castle-button { width: 170vw; max-width: 350px; }
+
+  .house1-link { top: 37.5%; left: 29.5%; } 
+  .house1-button { width: 10vw; max-width: 120px; }
+
+  .house8-link { top: 63.5%; left: 14.5%; } 
+  .house8-button { width: 5.5vw; max-width: 65px; }
+
+  .house7-link { top: 76.5%; left: 16%; } 
+  .house7-button { width: 6.5vw; max-width: 75px; }
+
+  .house4-link { top: 68.5%; left: 21.5%; } 
+  .house4-button { width: 6.5vw; max-width: 75px; }
+
+  .house5-link { top: 58.5%; left: 28%; } 
+  .house5-button { width: 7.5vw; max-width: 85px; }
+
+  .house6-link { top: 63.5%; left: 33%; } 
+  .house6-button { width: 7.5vw; max-width: 85px; }
+
+  .house3-link { top: 55.5%; left: 37.5%; } 
+  .house3-button { width: 6.5vw; max-width: 75px; }
+
+  .house2-link { top: 60.5%; left: 42%; } 
+  .house2-button { width: 7.5vw; max-width: 85px; }
+
+  .house9-link { top: 79.5%; left: 33.5%; } 
+  .house9-button { width: 7vw; max-width: 80px; }
+
+  .modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal:target {
+    display: flex; 
+  }
+
+  .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    animation: zoomIn 0.3s ease;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .close-btn:hover {
+    color: #ccc;
+  }
+
+  @keyframes zoomIn {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+  }
+</style>
+</head>
+<body>
+
+<div class="map-container">
+    <img src="MAIN MAP.jpeg" alt="Game Map" class="map-image">
+    
+    <a href="#myPopupWindow" class="castle-link"><img src="castle.png" alt="Castle" class="castle-button"></a>
+    <a href="#myPopupWindow" class="house1-link"><img src="house1.png" alt="Belle's House" class="house1-button"></a>
+    <a href="#myPopupWindow" class="house2-link"><img src="house2.png" alt="Greenhouse" class="house2-button"></a>
+    <a href="#myPopupWindow" class="house3-link"><img src="house3.png" alt="House 3" class="house3-button"></a>
+    <a href="#myPopupWindow" class="house4-link"><img src="house4.png" alt="House 4" class="house4-button"></a>
+    <a href="#myPopupWindow" class="house5-link"><img src="house5.png" alt="House 5" class="house5-button"></a>
+    <a href="#myPopupWindow" class="house6-link"><img src="house6.png" alt="House 6" class="house6-button"></a>
+    <a href="#myPopupWindow" class="house7-link"><img src="house7.png" alt="Bookseller" class="house7-button"></a>
+    <a href="#myPopupWindow" class="house8-link"><img src="house8.png" alt="Tavern" class="house8-button"></a>
+    <a href="#myPopupWindow" class="house9-link"><img src="house9.png" alt="Square Cart" class="house9-button"></a>
+</div>
+
+<div id="myPopupWindow" class="modal">
+  <a href="#" class="close-btn">&times;</a>
+  <img src="1.png" alt="Popup Image" class="modal-content">
+</div>
+
+</body>
+</html>
